@@ -18,3 +18,9 @@ class HomePage(ListView, BaseFormView):
             return ['profiles/home-with-profile.html']
 
         return ['profiles/home-no-profile.html']
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+        
+    

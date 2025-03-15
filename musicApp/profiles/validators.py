@@ -1,4 +1,5 @@
 from django.utils.deconstruct import deconstructible
+from django.utils.text import slugify
 
 @deconstructible
 class AlphaNumericValidator:
@@ -17,5 +18,5 @@ class AlphaNumericValidator:
             self.__message = value
 
     def __call__(self, value: str, *args, **kwargs):
-        if value != slugify(value):
+        if value.lower() != slugify(value):
             return ValidationError(self.message)
