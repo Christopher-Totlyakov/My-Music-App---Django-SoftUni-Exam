@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView, DetailView
 from albums.models import Album
 from albums.forms import AlbumCreateForm, AlbumEditForm
 from musicApp.utils import get_user_obj
@@ -22,3 +22,9 @@ class AlbumEditView(UpdateView):
     pk_url_kwarg = 'id'
     template_name = 'albums/album-edit.html'
     success_url = reverse_lazy('home')
+
+
+class AlbumDetailsView(DetailView):
+    model = Album
+    pk_url_kwarg = 'id'
+    template_name = 'albums/album-details.html'
