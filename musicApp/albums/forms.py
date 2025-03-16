@@ -16,4 +16,4 @@ class AlbumEditForm(PlaceholderMixin, AlbumBaseForm):
     pass
 
 class AlbumDeleteForm(ReadOnlyMixin, AlbumBaseForm):
-    read_only_fields = ['album_name', 'artist', 'genre', 'price', 'description']
+    read_only_fields = ['image_url', 'album_name', 'artist', 'genre', 'price', 'description']
