@@ -1,6 +1,6 @@
-from django.views.generic import CreateView, UpdateView, DetailView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
 from albums.models import Album
-from albums.forms import AlbumCreateForm, AlbumEditForm
+from albums.forms import AlbumCreateForm, AlbumEditForm, AlbumDeleteForm
 from musicApp.utils import get_user_obj
 from django.urls import reverse_lazy
 
@@ -23,6 +23,18 @@ class AlbumEditView(UpdateView):
     template_name = 'albums/album-edit.html'
     success_url = reverse_lazy('home')
 
+class AlbumDeleteView(DeleteView):
+    model = Album
+    form_class = AlbumDeleteForm
+    pk_url_kwarg = 'id'
+    template_name = 'albums/album-delete.html'
+    success_url = reverse_lazy('home')
+
+    def get_initial(self):
+        return self.object.__dict__
+
+    def form_invalid(self, form):
+        return self.form_valid(form)
 
 class AlbumDetailsView(DetailView):
     model = Album
