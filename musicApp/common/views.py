@@ -9,13 +9,7 @@ from profiles.forms import ProfileCreateForm
 class HomePage(ListView, BaseFormView):
     model = Album
     form_class = ProfileCreateForm
-    success_url = reverse_lazy('home')
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super().get_context_data()
-        context["profile"] = get_user_obj()
-        return context
-    
+    success_url = reverse_lazy('home')    
 
     def get_template_names(self):
         prfile = get_user_obj()

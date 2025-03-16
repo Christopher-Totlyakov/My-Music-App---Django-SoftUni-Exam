@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 MY_APPS = [
     'albums.apps.AlbumsConfig',
     'profiles.apps.ProfilesConfig',
+    'common.apps.CommonConfig',
 ]
 
 
